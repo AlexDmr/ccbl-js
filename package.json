@@ -1,0 +1,15 @@
+{
+  "name": "ccbl-js",
+  "version": "0.0.4",
+  "author": "Alexandre Demeure",
+  "url": "http://iihm.imag.fr/demeure",
+  "license": "Apache-2.0",
+  "keywords": [
+    "CCBL",
+    "Javascript"
+  ],
+  "main": "main.js",
+  "dependencies": {
+    "mathjs": "^5.4.1"
+  }
+}
