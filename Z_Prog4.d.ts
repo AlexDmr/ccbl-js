@@ -1,0 +1,17 @@
+import { CCBLEnvironmentExecution } from "./ExecutionEnvironment";
+import { CCBLTestClock } from "./Clock";
+import { Channel } from "./Channel";
+import { CCBLContextState } from "./ContextState";
+import { CCBLEmitterValue } from "./EmitterValue";
+import { EnvDescr } from "./EnvProgTypes";
+export declare let clock: CCBLTestClock;
+export declare let envExo4: CCBLEnvironmentExecution;
+export declare let LAMP_valueEmitter: CCBLEmitterValue<"OFF" | "WHITE" | "ORANGE" | "GREEN">;
+export declare let LAMP_chan: Channel<"OFF" | "WHITE" | "ORANGE" | "GREEN">;
+export declare let AliceLocation: CCBLEmitterValue<"Alice's Home" | "Martin's Home" | "UNKNOWN">;
+export declare let AliceAvailability: CCBLEmitterValue<"Available" | "Unavailable">;
+export declare let MartinLocation: CCBLEmitterValue<"Alice's Home" | "Martin's Home" | "UNKNOWN">;
+export declare let ProgExo4State: CCBLEmitterValue<boolean>;
+export declare let EnvDescr4: EnvDescr;
+export declare let ProgExo4: CCBLContextState<any, any>;
+export declare function initProgExo4Env(): void;
