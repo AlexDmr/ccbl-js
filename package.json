@@ -8,7 +8,7 @@
     "CCBL",
     "Javascript"
   ],
-  "main": "main.js",
+  "main": "lib/main.js",
   "dependencies": {
     "mathjs": "^5.4.1"
   }
