@@ -44,6 +44,13 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     getClock(): CCBLClock;
     appendEventActions(eventcontext: string | CCBLContextEvent, ...actions: HumanReadableEventAction[]): this;
     appendStateActions(stateContext: string | CCBLContextState<any, any>, ...actions: HumanReadableStateAction[]): this;
+    getProgramInstance(instanceName: string): CCBLProgramObjectInterface;
+    getProgramInstances(progName: string): {
+        program: HumanReadableProgram;
+        instances: CCBLProgramObjectInterface[];
+    };
+    unplugSubProgramInstance(instanceName: string): void;
+    removeSubProgram(programId: string): this;
     appendSubProgram(programId: string, description: HumanReadableProgram): this;
     plugSubProgramAs(config: {
         programId: string;
@@ -59,6 +66,7 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     loadHumanReadableProgram(descr: HumanReadableProgram, env: CCBLEnvironmentExecutionInterface, mapInputs: {
         [key: string]: string;
     }): this;
+    getStateContext(name: string): CCBLContextState<any, any>;
     private updateStructuralOrder;
     private createLocalEmitter;
     private loadContextOrProgram;

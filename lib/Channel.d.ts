@@ -11,7 +11,7 @@ export declare class Channel<T> implements ChannelInterface<T> {
     actions: ChannelActionStateOrEvent[];
     configActiveActionEvents: configActiveActionEvent<T>[];
     private cbEmitter;
-    private foreCommit;
+    private forceCommit;
     constructor(valueEmitter: CCBLEmitterValueInterface<T>);
     dispose(): void;
     getValueEmitter(): CCBLEmitterValueInterface<T>;
@@ -21,7 +21,7 @@ export declare class Channel<T> implements ChannelInterface<T> {
     setIsAvailable(available: boolean): this;
     append(channelAction: ChannelActionStateOrEvent): void;
     remove(channelAction: ChannelActionStateOrEvent): void;
-    update(newStateActions: ChannelActionStateOrEvent[]): void;
+    update(newStateActions?: ChannelActionStateOrEvent[]): void;
     configChanged(): boolean;
     getConstraintsAndStateAction(): ActiveStateConfig<T>;
     UnlistenToContextEvents(): this;
@@ -32,6 +32,7 @@ export declare class Channel<T> implements ChannelInterface<T> {
     shouldConsiderCommitting(): boolean;
     commit(): boolean;
 }
+export declare function UpdateChannelsActions(...channels: ChannelInterface<any>[]): void;
 export declare function commitStateActions(...channels: ChannelInterface<any>[]): void;
 export declare function registerChannel(...channels: ChannelInterface<any>[]): void;
 export declare function createChannel<T>(emitter: CCBLEmitterValue<T>): Channel<T>;

@@ -10,6 +10,7 @@ export interface ChannelInterface<T> {
     commit(): boolean;
     append(channelAction: ChannelActionStateOrEvent): any;
     remove(channelAction: ChannelActionStateOrEvent): any;
+    update(newStateActions?: ChannelActionStateOrEvent[]): any;
     toJSON(): ChannelJSON;
 }
 export declare type ChannelJSON = {
