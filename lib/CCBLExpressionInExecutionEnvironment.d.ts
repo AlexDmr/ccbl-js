@@ -2,6 +2,9 @@ import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterfa
 import { CCBLEmitterValue } from "./EmitterValue";
 import { ChannelInterface } from "./ChannelInterface";
 import { CCBLEmitterValueInterface, CCBLEmitterValueJSON } from "./EmitterValueInterface";
+export declare const scopeInterpolator: {
+    [key: string]: (dt: number, v0: any, v1: any) => any;
+};
 export declare class CCBLExpressionInExecutionEnvironment<T> extends CCBLEmitterValue<T> {
     protected env: CCBLEnvironmentExecutionInterface;
     private _originalExpression;
