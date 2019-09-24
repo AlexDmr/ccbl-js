@@ -31,6 +31,8 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     private parentProgram;
     constructor(name: string, clock: CCBLClock);
     dispose(): void;
+    UpdateChannelsActions(): void;
+    getChannels(): ChannelInterface<any>[];
     activate(v?: boolean): this;
     getEnvironment(): CCBLEnvironmentExecutionInterface;
     getRootChannel(): ChannelInterface<boolean>;

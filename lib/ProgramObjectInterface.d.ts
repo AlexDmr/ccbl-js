@@ -9,6 +9,7 @@ export interface CCBLProgramObjectInterface {
     getEnvironment(): CCBLEnvironmentExecutionInterface;
     getHumanReadableDescription(): HumanReadableProgram;
     activate(v?: boolean): this;
+    UpdateChannelsActions(): any;
     loadHumanReadableProgram(descr: HumanReadableProgram, env: CCBLEnvironmentExecutionInterface, mapInputs: {
         [key: string]: string;
     }): this;
@@ -36,6 +37,7 @@ export interface CCBLProgramObjectInterface {
     getEmitter(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEmitterValueInterface<any>;
     getChannelDescription(id: string): ChannelDescription;
     getChannel(id: string, env?: CCBLEnvironmentExecutionInterface): ChannelInterface<any>;
+    getChannels(): ChannelInterface<any>[];
     getEventerDescription(id: string): EventerDescription;
     getEventer(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEventInterface<any>;
     getValue(id: string): any;
