@@ -38,6 +38,7 @@ export interface CCBLProgramObjectInterface {
     getChannelDescription(id: string): ChannelDescription;
     getChannel(id: string, env?: CCBLEnvironmentExecutionInterface): ChannelInterface<any>;
     getChannels(): ChannelInterface<any>[];
+    recomputeAllChannelsForUpdate(): any;
     getEventerDescription(id: string): EventerDescription;
     getEventer(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEventInterface<any>;
     getValue(id: string): any;

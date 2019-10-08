@@ -11,6 +11,7 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     private name;
     private clock;
     private localSubProgChannelsId;
+    private allChannelsForUpdates;
     private localChannelsId;
     private localChannels;
     private inputChannelsId;
@@ -33,6 +34,7 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     dispose(): void;
     UpdateChannelsActions(): void;
     getChannels(): ChannelInterface<any>[];
+    recomputeAllChannelsForUpdate(): void;
     activate(v?: boolean): this;
     getEnvironment(): CCBLEnvironmentExecutionInterface;
     getRootChannel(): ChannelInterface<boolean>;
