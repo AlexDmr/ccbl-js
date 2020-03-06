@@ -119,7 +119,7 @@ export interface HumanReadableStateContext {
     allen?: AllenRelationships;
     actionsOnStart?: HumanReadableEventAction[];
     actionsOnEnd?: HumanReadableEventAction[];
-    ccblContext?: CCBLContextState<any, any>;
+    ccblContext?: CCBLContextStateAny;
 }
 export interface HumanReadableEventContext extends EventTrigger {
     contextName: string;
@@ -135,6 +135,7 @@ export interface HumanReadableProgram {
     subPrograms?: {
         [key: string]: HumanReadableProgram;
     };
+    ccblContext?: CCBLContextStateAny;
 }
 export declare function ProgramsEquivalents(A: {
     [keys: string]: HumanReadableProgram;
