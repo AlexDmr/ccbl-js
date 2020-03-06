@@ -3,12 +3,13 @@ import { CCBLEventInterface } from "./EventInterface";
 import { CCBLEmitterValueInterface } from "./EmitterValueInterface";
 import { AllenType } from "./AllenInterface";
 import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterface";
-import { CCBLContextState } from "./ContextState";
+import { CCBLContextState, CCBLContextStateAny } from "./ContextState";
 import { ChannelActionState } from "./ChannelActionState";
 import { ChannelActionEvent } from "./ChannelActionEvent";
 import { CCBLContextEvent } from "./ContextEvent";
 export interface CCBLProgramObjectInterface {
     dispose(): any;
+    getRootContext(): CCBLContextState<any, any>;
     getEnvironment(): CCBLEnvironmentExecutionInterface;
     getHumanReadableDescription(): HumanReadableProgram;
     activate(v?: boolean): this;
@@ -28,9 +29,8 @@ export interface CCBLProgramObjectInterface {
         hostContextName: string;
     }): this;
     unplugSubProgramInstance(instanceName: string): any;
-    appendStateActions(stateContextId: string, ...actions: HumanReadableStateAction[]): this;
-    appendEventActions(eventcontext: string, ...actions: HumanReadableEventAction[]): this;
-    getStateContext(name: string): CCBLContextState<any, any>;
+    appendStateActions(stateContextId: CCBLContextStateAny, ...actions: HumanReadableStateAction[]): this;
+    appendEventActions(eventcontext: CCBLContextEvent, ...actions: HumanReadableEventAction[]): this;
     getProgramInstance(instanceName: string): CCBLProgramObjectInterface;
     getProgramInstances(progName: string): {
         program: HumanReadableProgram;

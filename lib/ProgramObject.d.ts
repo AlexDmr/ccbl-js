@@ -1,5 +1,5 @@
 import { CCBLClock } from "./Clock";
-import { CCBLContextState } from "./ContextState";
+import { CCBLContextState, CCBLContextStateAny } from "./ContextState";
 import { CCBLProgramObjectInterface, ChannelDescription, EmitterDescription, EventerDescription, HumanReadableEventAction, HumanReadableProgram, HumanReadableStateAction } from "./ProgramObjectInterface";
 import { AllenType } from "./AllenInterface";
 import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterface";
@@ -25,8 +25,6 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     private rootChannel;
     private rootContext;
     private environment;
-    private localEventerContexts;
-    private localStateContexts;
     private humanReadableDescription;
     private subPrograms;
     private parentProgram;
@@ -46,8 +44,8 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     getEventer(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEventInterface<any>;
     getValue(id: string): any;
     getClock(): CCBLClock;
-    appendEventActions(eventcontext: string | CCBLContextEvent, ...actions: HumanReadableEventAction[]): this;
-    appendStateActions(stateContext: string | CCBLContextState<any, any>, ...actions: HumanReadableStateAction[]): this;
+    appendEventActions(eventcontext: CCBLContextEvent, ...actions: HumanReadableEventAction[]): this;
+    appendStateActions(stateContext: CCBLContextStateAny, ...actions: HumanReadableStateAction[]): this;
     getProgramInstance(instanceName: string): CCBLProgramObjectInterface;
     getProgramInstances(progName: string): {
         program: HumanReadableProgram;
@@ -56,6 +54,7 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     unplugSubProgramInstance(instanceName: string): void;
     removeSubProgram(programId: string): this;
     appendSubProgram(programId: string, description: HumanReadableProgram): this;
+    getStateContextNamed(name: string): CCBLContextStateAny;
     plugSubProgramAs(config: {
         programId: string;
         as: string;
@@ -70,14 +69,13 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     loadHumanReadableProgram(descr: HumanReadableProgram, env: CCBLEnvironmentExecutionInterface, mapInputs: {
         [key: string]: string;
     }): this;
-    getStateContext(name: string): CCBLContextState<any, any>;
     private updateStructuralOrder;
     private createLocalEmitter;
     private loadContextOrProgram;
     private loadHumanReadableContext;
     private loadHumanReadableContextevent;
     private loadHumanReadableContextState;
-    private getRootContext;
+    getRootContext(): CCBLContextState<any, any>;
     private createLocalChannels;
     createLocalEventer(...eventers: EventerDescription[]): EventerDescription[];
     private getSubProgramIdentifiedBy;
