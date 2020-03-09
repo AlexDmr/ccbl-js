@@ -1,2 +1,2 @@
 import { HumanReadableProgram } from "../../ProgramObjectInterface";
-export declare const RootParentDescr: HumanReadableProgram;
+export declare const RootParentDescr_V2: HumanReadableProgram;

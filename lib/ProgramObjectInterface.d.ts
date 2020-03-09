@@ -86,7 +86,7 @@ export interface AllenRelationships {
     StartWith?: ContextOrProgram[];
     EndWith?: ContextOrProgram[];
     Meet?: {
-        contextsSequence: HumanReadableContext[];
+        contextsSequence: HumanReadableStateContext[];
         loop?: number;
     };
 }
@@ -163,3 +163,13 @@ export declare function DependenciesEquivalents(A: ImportExportConfig, B: Import
 export declare function variablesEquivalents(A: VariableDescription[], B: VariableDescription[]): boolean;
 export declare function eventActionsEquivalent(A: HumanReadableEventAction[], B: HumanReadableEventAction[]): boolean;
 export declare function stateActionsEquivalents(A: HumanReadableStateAction[], B: HumanReadableStateAction[]): boolean;
+export declare function copyHumanReadableProgram(prog: HumanReadableProgram, withCcblRef?: boolean): HumanReadableProgram;
+export declare function copyContextOrProgram(obj: ContextOrProgram, withCcblRef?: boolean): ContextOrProgram;
+export declare function copyAllen(allen: AllenRelationships, withCcblRef?: boolean): AllenRelationships;
+export declare function copyHumanReadableEventContext(c: HumanReadableEventContext, withCcblRef?: boolean): HumanReadableEventContext;
+export declare function copyHumanReadableStateContext(c: HumanReadableStateContext, withCcblRef?: boolean): HumanReadableStateContext;
+export declare function copyHumanReadableEventAction(a: HumanReadableEventAction, withCcblRef?: boolean): HumanReadableEventAction;
+export declare function copyEventTrigger(evt: EventTrigger): EventTrigger;
+export declare function copyVocabulary(voc: Vocabulary): Vocabulary;
+export declare function copyVariableDescription(vd: VariableDescription): VariableDescription;
+export declare function copyHumanReadableStateActions(action: HumanReadableStateAction, withCcblRef?: boolean): HumanReadableStateAction;
