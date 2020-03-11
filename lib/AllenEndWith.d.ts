@@ -6,5 +6,7 @@ export declare class CCBLAllenEndWith extends CCBLAllen {
     children: CCBLContextStateEndWith[];
     constructor(parent: CCBLContextStateAny, children?: CCBLContextStateEndWith[]);
     getAllenType(): AllenType;
+    setParent(parent: CCBLContextStateAny): this;
+    private CB_active;
 }
 export declare function initEndWith(): void;
