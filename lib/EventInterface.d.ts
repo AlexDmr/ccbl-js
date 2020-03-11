@@ -2,6 +2,7 @@ export declare type CCBL_EventJSON = {
     available: boolean;
     type: "CCBL_EventJSON";
     eventName: string;
+    eventExpression: string;
     expressionFilter?: string;
     eventerSourceId?: string;
 };
@@ -23,4 +24,5 @@ export interface CCBLEventInterface<T> {
     getEventName(): string;
     getEventerSourceId(): string;
     getGuardExpression(): string;
+    getEventExpression(): string;
 }

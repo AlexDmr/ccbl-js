@@ -108,6 +108,7 @@ export declare type HumanReadableEventChannelAction = {
 export interface EventTrigger {
     eventName?: string;
     eventSource: string;
+    eventExpression?: string;
     eventFilter?: string;
 }
 export interface HumanReadableStateContext {

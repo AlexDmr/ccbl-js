@@ -3,12 +3,14 @@ import { CCBL_EventJSON, CCBLEventInterface, CCBLEventValue, CB_CCBLEvent } from
 import { CCBLEmitterValue } from "./EmitterValue";
 export declare type CCBLEvent_config = {
     eventName: string;
+    eventExpression?: string;
     env: CCBLEnvironmentExecutionInterface;
     expressionFilter?: string;
     eventerSourceId?: string;
 };
 export declare class CCBLEvent<T> implements CCBLEventInterface<T> {
     eventName: string;
+    eventExpression: string;
     jsonDirty: CCBLEmitterValue<boolean>;
     protected env: CCBLEnvironmentExecutionInterface;
     private available;
@@ -18,9 +20,12 @@ export declare class CCBLEvent<T> implements CCBLEventInterface<T> {
     private eventerSourceId;
     private eventerSource;
     private cbEventerSource;
-    constructor({ eventName, expressionFilter, env, eventerSourceId }: CCBLEvent_config);
+    private ccblExpression;
+    private cbExpression;
+    constructor({ eventExpression, eventName, expressionFilter, env, eventerSourceId }: CCBLEvent_config);
     dispose(): void;
     toJSON(): CCBL_EventJSON;
+    getEventExpression(): string;
     getEventerSourceId(): string;
     getEventName(): string;
     getGuardExpression(): string;
