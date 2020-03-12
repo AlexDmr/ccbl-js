@@ -1,12 +1,12 @@
-/// <reference types="mathjs" />
 import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterface";
 import { CCBLEmitterValue } from "./EmitterValue";
+import { MathJsStatic } from 'mathjs';
 import { ChannelInterface } from "./ChannelInterface";
 import { CCBLEmitterValueInterface, CCBLEmitterValueJSON } from "./EmitterValueInterface";
 export declare const scopeInterpolator: {
     [key: string]: (dt: number, v0: any, v1: any) => any;
 };
-export declare const mathjs: Partial<import("mathjs").MathJsStatic>;
+export declare const mathjs: Partial<MathJsStatic>;
 export declare class CCBLExpressionInExecutionEnvironment<T> extends CCBLEmitterValue<T> {
     protected env: CCBLEnvironmentExecutionInterface;
     private _originalExpression;
