@@ -2,6 +2,7 @@ import { CCBLExpressionInExecutionEnvironment } from "./CCBLExpressionInExecutio
 import { ChannelInterface } from "./ChannelInterface";
 import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterface";
 import { CCBLEmitterValueInterface } from "./EmitterValueInterface";
+import { CB_CCBLEmitter } from "./Emitter";
 export interface ChannelActionInterface {
     dispose(): any;
     getPriority(): number;
@@ -17,6 +18,9 @@ export interface ChannelActionEventInterface extends ChannelActionInterface {
 export interface ChannelActionStateInterface extends ChannelActionInterface {
     getValueGetter(): any;
     isValueGetterAConstraint(): boolean;
-    overhideWith(value: string): this;
     getEnvironment(): CCBLEnvironmentExecutionInterface;
+    overrideWith(value: string): this;
+    isOverrided(): boolean;
+    onOverride(cb: CB_CCBLEmitter<string | undefined>): this;
+    offOverride(cb: CB_CCBLEmitter<string | undefined>): this;
 }

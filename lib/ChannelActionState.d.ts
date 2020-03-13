@@ -5,6 +5,8 @@ import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterfa
 import { ChannelActionStateInterface } from "./ChannelActionStateEventInterface";
 import { CCBLExpressionInExecutionEnvironment } from "./CCBLExpressionInExecutionEnvironment";
 import { ChannelInterface, ChannelJSON } from "./ChannelInterface";
+import { CB_CCBLEmitter } from "./Emitter";
+import { CCBLEmitterValue } from "./EmitterValue";
 export declare type ChannelActionStateJSON = {
     available: boolean;
     type: string;
@@ -19,15 +21,19 @@ export declare class ChannelActionState<T> extends ChannelAction<T> implements C
     channel: ChannelInterface<T>;
     private env;
     protected lastJSON: ChannelActionStateJSON;
-    protected overhideValueGetter: CCBLExpressionInExecutionEnvironment<T>;
+    protected overrideValueGetter: CCBLExpressionInExecutionEnvironment<T>;
     protected valueGetter: CCBLExpressionInExecutionEnvironment<T> | CCBLConstraintValue<T>;
+    protected isOverridedVG: CCBLEmitterValue<string>;
     constructor(channel: ChannelInterface<T>, env: CCBLEnvironmentExecutionInterface, value: string | CCBLExpressionInExecutionEnvironment<T> | CCBLConstraintValue<T>);
     dispose(): void;
+    isOverrided(): boolean;
+    onOverride(cb: CB_CCBLEmitter<string>): this;
+    offOverride(cb: CB_CCBLEmitter<string>): this;
     getEnvironment(): CCBLEnvironmentExecutionInterface;
     toJSON(): ChannelActionStateJSON;
     isAvailable(): boolean;
     applyTo(V: T): T;
-    overhideWith(expression: string): this;
+    overrideWith(expression: string): this;
     getValueGetter(): CCBLExpressionInExecutionEnvironment<T> | CCBLConstraintValue<T>;
     isValueGetterAConstraint(): boolean;
     isChannelActionState(): boolean;
