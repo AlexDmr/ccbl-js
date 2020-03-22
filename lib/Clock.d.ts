@@ -16,6 +16,7 @@ export declare abstract class CCBLAbstractClock extends CCBLEmitterValue<number>
     onChange(cb: (ms: number) => void, end?: boolean): this;
     offChange(cb: CB_Clock): this;
     registerTimeForUpdate(ms: number): this;
+    get nextForeseenUpdate(): number;
 }
 export declare class CCBLSystemClock extends CCBLAbstractClock {
     now(): number;
