@@ -12,6 +12,7 @@ export declare class CCBLExpressionInExecutionEnvironment<T> extends CCBLEmitter
     private _originalExpression;
     private variableNames;
     private listening;
+    private neverListenBefore;
     private exprRootNode;
     private exprInterpolation;
     private channelsToCheck;

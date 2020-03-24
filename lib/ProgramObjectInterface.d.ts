@@ -7,6 +7,9 @@ import { CCBLContextState, CCBLContextStateAny } from "./ContextState";
 import { ChannelActionState } from "./ChannelActionState";
 import { ChannelActionEvent } from "./ChannelActionEvent";
 import { CCBLContextEvent } from "./ContextEvent";
+export declare type ProgVarForExpr = {
+    [key: string]: CCBLEmitterValueInterface<any>;
+};
 export interface CCBLProgramObjectInterface {
     dispose(): any;
     getRootContext(): CCBLContextState<any, any>;
@@ -137,6 +140,8 @@ export interface HumanReadableProgram {
         [key: string]: HumanReadableProgram;
     };
     ccblContext?: CCBLContextStateAny;
+    description?: string;
+    name?: string;
 }
 export declare function ProgramsEquivalents(A: {
     [keys: string]: HumanReadableProgram;
