@@ -143,6 +143,13 @@ export interface HumanReadableProgram {
     description?: string;
     name?: string;
 }
+export declare type VarLocation = 'channels' | 'emitters' | 'events';
+export declare type VarRange = 'local' | 'import' | 'export';
+export interface DataIsNameUsedInProg {
+    location: VarLocation;
+    varRange: VarRange;
+}
+export declare function isNameUsedInProg(name: string, prog: HumanReadableProgram): DataIsNameUsedInProg;
 export declare function ProgramsEquivalents(A: {
     [keys: string]: HumanReadableProgram;
 }, B: {
