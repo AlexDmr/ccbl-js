@@ -77,11 +77,14 @@ export interface Affectation {
     value: string;
 }
 export declare type ContextOrProgram = HumanReadableContext | ProgramReference;
+export declare type ProgramInput = string | EventTrigger | {
+    expression: string;
+};
 export interface ProgramReference {
     programId: string;
     as: string;
     mapInputs?: {
-        [key: string]: string;
+        [key: string]: ProgramInput;
     };
 }
 export interface AllenRelationships {
@@ -168,9 +171,9 @@ export declare function contextsEquivalent(A: ContextOrProgram[], B: ContextOrPr
 export declare function contextEquivalent(A: ContextOrProgram, B: ContextOrProgram): boolean;
 export declare function eventEquivalent(A: EventTrigger, B: EventTrigger): boolean;
 export declare function mapInputsEquivalent(A: {
-    [key: string]: string;
+    [key: string]: ProgramInput;
 }, B: {
-    [key: string]: string;
+    [key: string]: ProgramInput;
 }): boolean;
 export declare function DependenciesEquivalents(A: ImportExportConfig, B: ImportExportConfig): boolean;
 export declare function variablesEquivalents(A: VariableDescription[], B: VariableDescription[]): boolean;
@@ -178,6 +181,7 @@ export declare function eventActionsEquivalent(A: HumanReadableEventAction[], B:
 export declare function stateActionsEquivalents(A: HumanReadableStateAction[], B: HumanReadableStateAction[]): boolean;
 export declare function copyHumanReadableProgram(prog: HumanReadableProgram, withCcblRef?: boolean): HumanReadableProgram;
 export declare function copyContextOrProgram(obj: ContextOrProgram, withCcblRef?: boolean): ContextOrProgram;
+export declare function copyProgRef(progRef: ProgramReference): ProgramReference;
 export declare function copyAllen(allen: AllenRelationships, withCcblRef?: boolean): AllenRelationships;
 export declare function copyHumanReadableEventContext(c: HumanReadableEventContext, withCcblRef?: boolean): HumanReadableEventContext;
 export declare function copyHumanReadableStateContext(c: HumanReadableStateContext, withCcblRef?: boolean): HumanReadableStateContext;

@@ -26,4 +26,5 @@ export declare class CCBLTestClock extends CCBLAbstractClock {
     now(): number;
     forward(ms?: number): this;
     goto(ms: number): this;
+    set(ms: number): this;
 }

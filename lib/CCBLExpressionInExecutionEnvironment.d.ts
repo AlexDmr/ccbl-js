@@ -10,7 +10,7 @@ export declare const mathjs: Partial<MathJsStatic>;
 export declare class CCBLExpressionInExecutionEnvironment<T> extends CCBLEmitterValue<T> {
     protected env: CCBLEnvironmentExecutionInterface;
     private _originalExpression;
-    private variableNames;
+    private _variableNames;
     private listening;
     private neverListenBefore;
     private exprRootNode;
@@ -24,6 +24,7 @@ export declare class CCBLExpressionInExecutionEnvironment<T> extends CCBLEmitter
     toJSON(): CCBLExpressionInExecutionEnvironmentJSON;
     getErrorEvaluation(): undefined | string;
     get originalExpression(): string;
+    get variableNames(): string[];
     getExpression(): string;
     setExpression(expression: string, scope?: string[]): string;
     listen(value?: boolean): this;

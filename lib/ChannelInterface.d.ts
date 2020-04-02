@@ -12,6 +12,7 @@ export interface ChannelInterface<T> {
     remove(channelAction: ChannelActionStateOrEvent): any;
     update(newStateActions?: ChannelActionStateOrEvent[]): any;
     toJSON(): ChannelJSON;
+    dispose(): void;
 }
 export declare type ChannelJSON = {
     available: boolean;

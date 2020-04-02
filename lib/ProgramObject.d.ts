@@ -1,6 +1,6 @@
 import { CCBLClock } from "./Clock";
 import { CCBLContextState, CCBLContextStateAny } from "./ContextState";
-import { CCBLProgramObjectInterface, ChannelDescription, EmitterDescription, EventerDescription, HumanReadableEventAction, HumanReadableProgram, HumanReadableStateAction } from "./ProgramObjectInterface";
+import { CCBLProgramObjectInterface, ChannelDescription, EmitterDescription, EventerDescription, HumanReadableEventAction, HumanReadableProgram, HumanReadableStateAction, ProgramInput } from "./ProgramObjectInterface";
 import { AllenType } from "./AllenInterface";
 import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterface";
 import { CCBLEmitterValueInterface } from "./EmitterValueInterface";
@@ -10,6 +10,7 @@ import { CCBLContextEvent } from "./ContextEvent";
 export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     private name;
     private clock;
+    private bindedEmittersAndEvents;
     private localSubProgChannelsId;
     private allChannelsForUpdates;
     private localChannelsId;
@@ -59,7 +60,7 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
         programId: string;
         as: string;
         mapInputs: {
-            [key: string]: string;
+            [key: string]: ProgramInput;
         };
         allen: AllenType;
         hostContextName: string | CCBLContextState<any, any>;
@@ -67,7 +68,7 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     toHumanReadableProgram(): HumanReadableProgram;
     getHumanReadableDescription(): HumanReadableProgram;
     loadHumanReadableProgram(descr: HumanReadableProgram, env: CCBLEnvironmentExecutionInterface, mapInputs: {
-        [key: string]: string;
+        [key: string]: ProgramInput;
     }): this;
     private updateStructuralOrder;
     private createLocalEmitter;
