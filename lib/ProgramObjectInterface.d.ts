@@ -77,9 +77,7 @@ export interface Affectation {
     value: string;
 }
 export declare type ContextOrProgram = HumanReadableContext | ProgramReference;
-export declare type ProgramInput = string | EventTrigger | {
-    expression: string;
-};
+export declare type ProgramInput = string | EventTrigger;
 export interface ProgramReference {
     programId: string;
     as: string;
