@@ -84,6 +84,7 @@ export interface ProgramReference {
     mapInputs?: {
         [key: string]: ProgramInput;
     };
+    id?: string;
 }
 export interface AllenRelationships {
     During?: ContextOrProgram[];
@@ -98,22 +99,26 @@ export interface HumanReadableStateAction {
     channel: string;
     affectation: Affectation;
     ccblAction?: ChannelActionState<any>;
+    id?: string;
 }
 export declare type HumanReadableEventAction = HumanReadableEventChannelAction | HumanReadableEventTriggerAction;
 export declare type HumanReadableEventTriggerAction = {
     eventer: string;
     expression: string;
+    id?: string;
 };
 export declare type HumanReadableEventChannelAction = {
     channel: string;
     affectation: string;
     ccblAction?: ChannelActionEvent<any>;
+    id?: string;
 };
 export interface EventTrigger {
     eventName?: string;
     eventSource: string;
     eventExpression?: string;
     eventFilter?: string;
+    id?: string;
 }
 export interface HumanReadableStateContext {
     contextName: string;
@@ -125,11 +130,13 @@ export interface HumanReadableStateContext {
     actionsOnStart?: HumanReadableEventAction[];
     actionsOnEnd?: HumanReadableEventAction[];
     ccblContext?: CCBLContextStateAny;
+    id?: string;
 }
 export interface HumanReadableEventContext extends EventTrigger {
     contextName: string;
     actions: HumanReadableEventAction[];
     ccblContext?: CCBLContextEvent;
+    id?: string;
 }
 export declare type HumanReadableContext = HumanReadableStateContext | HumanReadableEventContext;
 export interface HumanReadableProgram {
@@ -156,28 +163,28 @@ export declare function ProgramsEquivalents(A: {
     [keys: string]: HumanReadableProgram;
 }, B: {
     [keys: string]: HumanReadableProgram;
-}): boolean;
-export declare function progEquivalent(P1: HumanReadableProgram, P2: HumanReadableProgram): boolean;
-export declare function allenEquivalent(A: AllenRelationships, B: AllenRelationships): boolean;
+}, withId: boolean): boolean;
+export declare function progEquivalent(P1: HumanReadableProgram, P2: HumanReadableProgram, withId?: boolean): boolean;
+export declare function allenEquivalent(A: AllenRelationships, B: AllenRelationships, withId: boolean): boolean;
 export declare function contextsMeetEquivalent(A: {
     contextsSequence: HumanReadableContext[];
     loop?: number;
 }, B: {
     contextsSequence: HumanReadableContext[];
     loop?: number;
-}): boolean;
-export declare function contextsEquivalent(A: ContextOrProgram[], B: ContextOrProgram[]): boolean;
-export declare function contextEquivalent(A: ContextOrProgram, B: ContextOrProgram): boolean;
-export declare function eventEquivalent(A: EventTrigger, B: EventTrigger): boolean;
+}, withId: boolean): boolean;
+export declare function contextsEquivalent(A: ContextOrProgram[], B: ContextOrProgram[], withId: boolean): boolean;
+export declare function contextEquivalent(A: ContextOrProgram, B: ContextOrProgram, withId: boolean): boolean;
+export declare function eventEquivalent(A: EventTrigger, B: EventTrigger, withId: boolean): boolean;
 export declare function mapInputsEquivalent(A: {
     [key: string]: ProgramInput;
 }, B: {
     [key: string]: ProgramInput;
-}): boolean;
+}, withId: boolean): boolean;
 export declare function DependenciesEquivalents(A: ImportExportConfig, B: ImportExportConfig): boolean;
 export declare function variablesEquivalents(A: VariableDescription[], B: VariableDescription[]): boolean;
-export declare function eventActionsEquivalent(A: HumanReadableEventAction[], B: HumanReadableEventAction[]): boolean;
-export declare function stateActionsEquivalents(A: HumanReadableStateAction[], B: HumanReadableStateAction[]): boolean;
+export declare function eventActionsEquivalent(A: HumanReadableEventAction[], B: HumanReadableEventAction[], withId: boolean): boolean;
+export declare function stateActionsEquivalents(A: HumanReadableStateAction[], B: HumanReadableStateAction[], withId: boolean): boolean;
 export declare function copyHumanReadableProgram(prog: HumanReadableProgram, withCcblRef?: boolean): HumanReadableProgram;
 export declare function copyContextOrProgram(obj: ContextOrProgram, withCcblRef?: boolean): ContextOrProgram;
 export declare function copyProgRef(progRef: ProgramReference): ProgramReference;
