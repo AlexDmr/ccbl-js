@@ -5,6 +5,7 @@ export interface CCBLClock {
     onChange(cb: (ms: number) => void, end?: boolean): this;
     offChange(cb: (ms: number) => void): this;
     registerTimeForUpdate(ms: number): this;
+    unregisterTimeForUpdate(ms: number): this;
 }
 export declare type CB_Clock = (ms: number) => void;
 export declare abstract class CCBLAbstractClock extends CCBLEmitterValue<number> implements CCBLClock {
@@ -16,6 +17,7 @@ export declare abstract class CCBLAbstractClock extends CCBLEmitterValue<number>
     onChange(cb: (ms: number) => void, end?: boolean): this;
     offChange(cb: CB_Clock): this;
     registerTimeForUpdate(ms: number): this;
+    unregisterTimeForUpdate(ms: number): this;
     get nextForeseenUpdate(): number;
 }
 export declare class CCBLSystemClock extends CCBLAbstractClock {

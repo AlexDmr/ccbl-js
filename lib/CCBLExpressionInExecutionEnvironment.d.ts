@@ -19,6 +19,7 @@ export declare class CCBLExpressionInExecutionEnvironment<T> extends CCBLEmitter
     private emitersToCheck;
     private cbEmitterUpdated;
     private errorEvaluation;
+    private nextUpdateTime;
     constructor(config: CCBLExpressionInExecutionEnvironmentConfig);
     dispose(): void;
     toJSON(): CCBLExpressionInExecutionEnvironmentJSON;
