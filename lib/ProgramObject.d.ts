@@ -64,7 +64,7 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
         };
         allen: AllenType;
         hostContextName: string | CCBLContextState<any, any>;
-    }): this;
+    }): CCBLProgramObjectInterface;
     toHumanReadableProgram(): HumanReadableProgram;
     getHumanReadableDescription(): HumanReadableProgram;
     loadHumanReadableProgram(descr: HumanReadableProgram, env: CCBLEnvironmentExecutionInterface, mapInputs: {

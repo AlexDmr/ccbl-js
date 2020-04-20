@@ -19,7 +19,7 @@ export interface CCBLProgramObjectInterface {
     UpdateChannelsActions(): any;
     loadHumanReadableProgram(descr: HumanReadableProgram, env: CCBLEnvironmentExecutionInterface, mapInputs: {
         [key: string]: string;
-    }): this;
+    }): CCBLProgramObjectInterface;
     appendSubProgram(programId: string, description: HumanReadableProgram): this;
     removeSubProgram(programId: string): this;
     plugSubProgramAs(config: {
@@ -30,7 +30,7 @@ export interface CCBLProgramObjectInterface {
         };
         allen: AllenType;
         hostContextName: string;
-    }): this;
+    }): void;
     unplugSubProgramInstance(instanceName: string): any;
     appendStateActions(stateContextId: CCBLContextStateAny, ...actions: HumanReadableStateAction[]): this;
     appendEventActions(eventcontext: CCBLContextEvent, ...actions: HumanReadableEventAction[]): this;
