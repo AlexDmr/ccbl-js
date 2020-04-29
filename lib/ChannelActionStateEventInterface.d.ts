@@ -21,6 +21,7 @@ export interface ChannelActionStateInterface extends ChannelActionInterface {
     getEnvironment(): CCBLEnvironmentExecutionInterface;
     overrideWith(value: string): this;
     isOverrided(): boolean;
+    getOverrideExpression(): string;
     onOverride(cb: CB_CCBLEmitter<string | undefined>): this;
     offOverride(cb: CB_CCBLEmitter<string | undefined>): this;
 }

@@ -27,6 +27,7 @@ export declare class ChannelActionState<T> extends ChannelAction<T> implements C
     constructor(channel: ChannelInterface<T>, env: CCBLEnvironmentExecutionInterface, value: string | CCBLExpressionInExecutionEnvironment<T> | CCBLConstraintValue<T>);
     dispose(): void;
     isOverrided(): boolean;
+    getOverrideExpression(): string;
     onOverride(cb: CB_CCBLEmitter<string>): this;
     offOverride(cb: CB_CCBLEmitter<string>): this;
     getEnvironment(): CCBLEnvironmentExecutionInterface;
