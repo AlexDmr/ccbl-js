@@ -25,4 +25,5 @@ export interface CCBLEventInterface<T> {
     getEventerSourceId(): string;
     getGuardExpression(): string;
     getEventExpression(): string;
+    evalEventExpression(): T;
 }

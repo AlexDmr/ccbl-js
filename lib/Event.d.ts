@@ -25,6 +25,7 @@ export declare class CCBLEvent<T> implements CCBLEventInterface<T> {
     constructor({ eventExpression, eventName, expressionFilter, env, eventerSourceId }: CCBLEvent_config);
     dispose(): void;
     toJSON(): CCBL_EventJSON;
+    evalEventExpression(): T;
     getEventExpression(): string;
     getEventerSourceId(): string;
     getEventName(): string;
