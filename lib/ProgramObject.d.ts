@@ -1,6 +1,6 @@
 import { CCBLClock } from "./Clock";
 import { CCBLContextState, CCBLContextStateAny } from "./ContextState";
-import { CCBLProgramObjectInterface, ChannelDescription, EmitterDescription, EventerDescription, HumanReadableEventAction, HumanReadableProgram, HumanReadableStateAction, ProgramInput } from "./ProgramObjectInterface";
+import { CCBLProgramObjectInterface, ChannelDescription, EmitterDescription, EventerDescription, HumanReadableEventAction, HumanReadableProgram, HumanReadableStateAction, ProgramInput, VariableDescription } from "./ProgramObjectInterface";
 import { AllenType } from "./AllenInterface";
 import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterface";
 import { CCBLEmitterValueInterface } from "./EmitterValueInterface";
@@ -37,25 +37,25 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     activate(v?: boolean): this;
     getEnvironment(): CCBLEnvironmentExecutionInterface;
     getRootChannel(): ChannelInterface<boolean>;
-    getChannelDescription(id: string): ChannelDescription;
-    getChannel(id: string, env?: CCBLEnvironmentExecutionInterface): ChannelInterface<any>;
-    getEmitterDescription(id: string): EmitterDescription;
-    getEmitter(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEmitterValueInterface<any>;
-    getEventerDescription(id: string): EventerDescription;
-    getEventer(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEventInterface<any>;
+    getChannelDescription(id: string): ChannelDescription | undefined;
+    getChannel(id: string, env?: CCBLEnvironmentExecutionInterface): ChannelInterface<any> | undefined;
+    getEmitterDescription(id: string): EmitterDescription | undefined;
+    getEmitter(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEmitterValueInterface<any> | undefined;
+    getEventerDescription(id: string): EventerDescription | undefined;
+    getEventer(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEventInterface<any> | undefined;
     getValue(id: string): any;
     getClock(): CCBLClock;
     appendEventActions(eventcontext: CCBLContextEvent, ...actions: HumanReadableEventAction[]): this;
     appendStateActions(stateContext: CCBLContextStateAny, ...actions: HumanReadableStateAction[]): this;
-    getProgramInstance(instanceName: string): CCBLProgramObjectInterface;
+    getProgramInstance(instanceName: string): CCBLProgramObjectInterface | undefined;
     getProgramInstances(progName: string): {
         program: HumanReadableProgram;
         instances: CCBLProgramObjectInterface[];
-    };
+    } | undefined;
     unplugSubProgramInstance(instanceName: string): void;
     removeSubProgram(programId: string): this;
     appendSubProgram(programId: string, description: HumanReadableProgram): this;
-    getStateContextNamed(name: string): CCBLContextStateAny;
+    getStateContextNamed(name: string): CCBLContextStateAny | undefined;
     plugSubProgramAs(config: {
         programId: string;
         as: string;
@@ -66,7 +66,7 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
         hostContextName: string | CCBLContextState<any, any>;
     }): CCBLProgramObjectInterface;
     toHumanReadableProgram(): HumanReadableProgram;
-    getHumanReadableDescription(): HumanReadableProgram;
+    getHumanReadableDescription(): HumanReadableProgram | undefined;
     loadHumanReadableProgram(descr: HumanReadableProgram, env: CCBLEnvironmentExecutionInterface, mapInputs: {
         [key: string]: ProgramInput;
     }): this;
@@ -77,7 +77,9 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     private loadHumanReadableContextevent;
     private loadHumanReadableContextState;
     getRootContext(): CCBLContextState<any, any>;
+    private createLocalChannelsFromVars;
     private createLocalChannels;
+    createLocalEventerFromVars(...vars: VariableDescription[]): EventerDescription[];
     createLocalEventer(...eventers: EventerDescription[]): EventerDescription[];
     private getSubProgramIdentifiedBy;
 }

@@ -13,6 +13,7 @@ export declare type CCBLContextEventJSON = {
 export declare class CCBLContextEvent extends CCBLContext {
     event: CCBLEventInterface<any>;
     private actualCbJsonDirty;
+    protected contextName: string;
     constructor(contextName: string, event: CCBLEventInterface<any>);
     dispose(): void;
     toJSON(): CCBLContextEventJSON;

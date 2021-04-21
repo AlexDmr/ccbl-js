@@ -14,8 +14,8 @@ export declare type CCBLAllenJSON = {
 export interface CCBLAllenInterface {
     dispose(): any;
     getAllenType(): AllenType;
-    getParent(): CCBLContextInterface;
-    setParent(parent: CCBLContextInterface): this;
+    getParent(): CCBLContextInterface | undefined;
+    setParent(parent: CCBLContextInterface | undefined): this;
     appendChildren(...children: CCBLContext[]): this;
     getChildren(): CCBLContextInterface[];
     toJSON(): CCBLAllenJSON;

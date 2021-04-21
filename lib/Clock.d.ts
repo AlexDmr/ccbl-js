@@ -2,24 +2,24 @@ import { CCBLEmitterValue } from "./EmitterValue";
 export interface CCBLClock {
     now(): number;
     emitChange(ms?: number): this;
-    onChange(cb: (ms: number) => void, end?: boolean): this;
-    offChange(cb: (ms: number) => void): this;
+    onChange(cb: CB_Clock, end?: boolean): this;
+    offChange(cb: CB_Clock): this;
     registerTimeForUpdate(ms: number): this;
     unregisterTimeForUpdate(ms: number): this;
 }
-export declare type CB_Clock = (ms: number) => void;
-export declare abstract class CCBLAbstractClock extends CCBLEmitterValue<number> implements CCBLClock {
+export declare type CB_Clock = (ms: number | undefined) => void;
+export declare abstract class CCBLAbstractClock extends CCBLEmitterValue<number | undefined> implements CCBLClock {
     protected timesForUpdate: number[];
-    protected endEmitter: CCBLEmitterValue<number>;
+    protected endEmitter: CCBLEmitterValue<number | undefined>;
     constructor();
-    now(): number;
+    abstract now(): number;
     emitChange(ms?: number): this;
-    onChange(cb: (ms: number) => void, end?: boolean): this;
+    onChange(cb: CB_Clock, end?: boolean): this;
     offChange(cb: CB_Clock): this;
     registerTimeForUpdate(ms: number): this;
     unregisterTimeForUpdate(ms: number): this;
     getTimesForUpdate(): number[];
-    get nextForeseenUpdate(): number;
+    get nextForeseenUpdate(): number | undefined;
 }
 export declare class CCBLSystemClock extends CCBLAbstractClock {
     now(): number;

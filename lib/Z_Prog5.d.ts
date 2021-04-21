@@ -16,7 +16,7 @@ export declare let TV_isOn: Channel<boolean>;
 export declare let TV_State: Channel<PLAY_STATE>;
 export declare let TV_channel: Channel<number>;
 export declare let TV_volume: Channel<number>;
-export declare let chanVarBeta: Channel<number>;
+export declare let chanVarBeta: Channel<number | undefined>;
 export declare let TV_evtVolP: CCBLEvent<boolean>;
 export declare let TV_evtVolM: CCBLEvent<boolean>;
 export declare let TV_evtChanP: CCBLEvent<boolean>;

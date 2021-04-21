@@ -9,9 +9,9 @@ import { CCBLStateInExecutionEnvironment, CCBLStateInExecutionEnvironmentJSON } 
 import { CCBLContextEvent } from "./ContextEvent";
 export declare type CCBLContextStateJSON = {
     type: string;
-    state: CCBLStateInExecutionEnvironmentJSON;
-    eventStart: CCBL_EventJSON;
-    eventFinish: CCBL_EventJSON;
+    state?: CCBLStateInExecutionEnvironmentJSON;
+    eventStart?: CCBL_EventJSON;
+    eventFinish?: CCBL_EventJSON;
     actionsOnStart: ChannelActionJSON[];
     actionsOnFinish: ChannelActionJSON[];
     parentOfAllenRelationships: CCBLAllenJSON[];
@@ -30,13 +30,14 @@ export declare type configCCBLContextState<T_EVENT_START, T_EVENT_FINISH> = {
 };
 export declare class CCBLContextState<T_EVENT_START, T_EVENT_FINISH> extends CCBLContext {
     environment: CCBLEnvironmentExecutionInterface;
-    state: CCBLStateInExecutionEnvironment;
-    eventStart: CCBLEventInterface<T_EVENT_START>;
-    eventFinish: CCBLEventInterface<T_EVENT_FINISH>;
+    state: CCBLStateInExecutionEnvironment | undefined;
+    eventStart: CCBLEventInterface<T_EVENT_START> | undefined;
+    eventFinish: CCBLEventInterface<T_EVENT_FINISH> | undefined;
     eventContextStart: CCBLContextEvent;
     eventContextEnd: CCBLContextEvent;
-    rootOfProgramId: string;
-    protected lastJSONState: CCBLContextStateJSON;
+    rootOfProgramId: string | undefined;
+    protected contextName: string;
+    protected lastJSONState: CCBLContextStateJSON | undefined;
     private msEventStart;
     private active;
     private emitter;

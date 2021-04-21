@@ -1,20 +1,20 @@
 import { CCBLEmitterValue } from "./EmitterValue";
 import { ActiveStateConfig, ChannelActionStateOrEvent, ChannelInterface, ChannelJSON, configActiveActionEvent } from "./ChannelInterface";
 import { CCBLEmitterValueInterface } from "./EmitterValueInterface";
-export declare function getNewChannel<T>(initialValue?: T, valueEmitter?: CCBLEmitterValueInterface<T>): Channel<T>;
+export declare function getNewChannel<T>(initialValue: T, valueEmitter?: CCBLEmitterValueInterface<T>): Channel<T>;
 export declare class Channel<T> implements ChannelInterface<T> {
     valueEmitter: CCBLEmitterValueInterface<T>;
     dirty: boolean;
     dirtyJSON: boolean;
-    lastJSON: ChannelJSON;
-    lastActiveStateConfig: ActiveStateConfig<T>;
+    lastJSON: ChannelJSON | undefined;
+    lastActiveStateConfig: ActiveStateConfig<T> | undefined;
     actions: ChannelActionStateOrEvent[];
     configActiveActionEvents: configActiveActionEvent<T>[];
     private cbEmitter;
     private forceCommit;
     constructor(valueEmitter: CCBLEmitterValueInterface<T>);
     dispose(): void;
-    getValueEmitter(): CCBLEmitterValueInterface<T>;
+    getValueEmitter(): CCBLEmitterValueInterface<T | undefined>;
     getChannelId(): string;
     toJSON(): ChannelJSON;
     isAvailable(): boolean;

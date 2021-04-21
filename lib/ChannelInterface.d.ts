@@ -4,7 +4,7 @@ import { ChannelActionEventInterface, ChannelActionStateInterface } from "./Chan
 export interface ChannelInterface<T> {
     getChannelId(): string;
     isAvailable(): boolean;
-    getValueEmitter(): CCBLEmitterValueInterface<T>;
+    getValueEmitter(): CCBLEmitterValueInterface<T | undefined>;
     shouldConsiderCommitting(): boolean;
     getConstraintsAndStateAction(): ActiveStateConfig<T>;
     commit(): boolean;

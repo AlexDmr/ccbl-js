@@ -4,15 +4,15 @@ import { CCBLContextJSON as CCBLContextJSON_fromInterface, CCBLContextInterface 
 import { ChannelInterface } from "./ChannelInterface";
 import { CCBLContextStateAny } from "./ContextState";
 export declare type CCBLContextJSON = CCBLContextJSON_fromInterface;
-export declare class CCBLContext implements CCBLContextInterface {
+export declare abstract class CCBLContext implements CCBLContextInterface {
     priority: number;
     protected parentOfAllenRelationships: CCBLAllenInterface[];
     protected referedByAllenRelationships: CCBLAllenInterface[];
     protected activable: boolean;
     protected channelActions: Map<ChannelInterface<any>, ChannelAction<any>>;
-    protected lastJSON: CCBLContextJSON;
+    protected lastJSON: CCBLContextJSON | undefined;
     protected jsonDirty: boolean;
-    protected contextName: string;
+    protected abstract contextName: string;
     dispose(): void;
     protected cbActionDirty: (dirty: boolean) => void;
     setJsonDirty(): this;
@@ -33,5 +33,5 @@ export declare class CCBLContext implements CCBLContextInterface {
     setPriority(P: number): this;
     getParentOfAllenRelationships(): CCBLAllenInterface[];
     getReferedByAllenRelationships(): CCBLAllenInterface[];
-    getContainingStateContext(): CCBLContextStateAny;
+    getContainingStateContext(): CCBLContextStateAny | undefined;
 }

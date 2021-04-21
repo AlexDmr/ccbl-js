@@ -14,7 +14,7 @@ export interface CCBLProgramObjectInterface {
     dispose(): any;
     getRootContext(): CCBLContextState<any, any>;
     getEnvironment(): CCBLEnvironmentExecutionInterface;
-    getHumanReadableDescription(): HumanReadableProgram;
+    getHumanReadableDescription(): HumanReadableProgram | undefined;
     activate(v?: boolean): this;
     UpdateChannelsActions(): any;
     loadHumanReadableProgram(descr: HumanReadableProgram, env: CCBLEnvironmentExecutionInterface, mapInputs: {
@@ -34,19 +34,19 @@ export interface CCBLProgramObjectInterface {
     unplugSubProgramInstance(instanceName: string): any;
     appendStateActions(stateContextId: CCBLContextStateAny, ...actions: HumanReadableStateAction[]): this;
     appendEventActions(eventcontext: CCBLContextEvent, ...actions: HumanReadableEventAction[]): this;
-    getProgramInstance(instanceName: string): CCBLProgramObjectInterface;
+    getProgramInstance(instanceName: string): CCBLProgramObjectInterface | undefined;
     getProgramInstances(progName: string): {
         program: HumanReadableProgram;
         instances: CCBLProgramObjectInterface[];
-    };
-    getEmitterDescription(id: string): EmitterDescription;
-    getEmitter(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEmitterValueInterface<any>;
-    getChannelDescription(id: string): ChannelDescription;
-    getChannel(id: string, env?: CCBLEnvironmentExecutionInterface): ChannelInterface<any>;
+    } | undefined;
+    getEmitterDescription(id: string): EmitterDescription | undefined;
+    getEmitter(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEmitterValueInterface<any> | undefined;
+    getChannelDescription(id: string): ChannelDescription | undefined;
+    getChannel(id: string, env?: CCBLEnvironmentExecutionInterface): ChannelInterface<any> | undefined;
     getChannels(): ChannelInterface<any>[];
     recomputeAllChannelsForUpdate(): any;
-    getEventerDescription(id: string): EventerDescription;
-    getEventer(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEventInterface<any>;
+    getEventerDescription(id: string): EventerDescription | undefined;
+    getEventer(id: string, env?: CCBLEnvironmentExecutionInterface): CCBLEventInterface<any> | undefined;
     getValue(id: string): any;
     toHumanReadableProgram(): HumanReadableProgram;
 }
@@ -157,7 +157,7 @@ export interface DataIsNameUsedInProg {
     location: VarLocation;
     varRange: VarRange;
 }
-export declare function isNameUsedInProg(name: string, prog: HumanReadableProgram): DataIsNameUsedInProg;
+export declare function isNameUsedInProg(name: string, prog: HumanReadableProgram): DataIsNameUsedInProg | undefined;
 export declare function getAllContextOrProgramsFromProg(P: HumanReadableProgram): ContextOrProgram[];
 export declare function ProgramsEquivalents(A: {
     [keys: string]: HumanReadableProgram;

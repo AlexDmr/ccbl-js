@@ -18,22 +18,23 @@ export declare class CCBLEnvironmentExecution implements CCBLEnvironmentExecutio
     set_Clock(clock: CCBLClock): this;
     unregisterCCBLEvent(id: string): this;
     registerCCBLEvent(id: string, ccblEvent: CCBLEventInterface<any>): this;
-    getCCBLEvent(id: string): CCBLEventInterface<any>;
+    getCCBLEvent(id: string): CCBLEventInterface<any> | undefined;
     unregister_CCBLEmitterValue(id: string): this;
     register_CCBLEmitterValue(id: string, EV: CCBLEmitterValueInterface<any>): this;
-    get_CCBLEmitterValue_FromId(id: string): CCBLEmitterValueInterface<any>;
+    get_CCBLEmitterValue_FromId(id: string): CCBLEmitterValueInterface<any> | undefined;
     unregister_Channel(id: string): this;
     register_Channel(id: string, chan: ChannelInterface<any>): this;
     unregisterProgInstance(id: string): this;
     registerProgInstance(id: string, progVar: ProgVarForExpr): this;
-    getProgInstance(id: string): ProgVarForExpr;
+    getProgInstance(id: string): ProgVarForExpr | undefined;
     getAllProgramInstance(): {
         id: string;
         progVar: ProgVarForExpr;
-    }[];
-    get_Channel_FromId(id: string): ChannelInterface<any>;
+    }[] | undefined;
+    get_Channel_FromId(id: string): ChannelInterface<any> | undefined;
     getAllEmitterValues(): CCBLEmitterValueInterface<any>[];
     getAllChannels(): ChannelInterface<any>[];
-    getNameOfChannel(channel: ChannelInterface<any>): null | string;
+    getNameOfChannel(channel: ChannelInterface<any>): string | undefined;
     private isNameUsed;
 }
+export declare const emptyEnvExec: CCBLEnvironmentExecution;

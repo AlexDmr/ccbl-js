@@ -6,8 +6,8 @@ import { CCBLEmitterValueInterface, CCBLEmitterValueJSON } from "./EmitterValueI
 export declare const scopeInterpolator: {
     [key: string]: (dt: number, v0: any, v1: any) => any;
 };
-export declare const mathjs: Partial<MathJsStatic>;
-export declare class CCBLExpressionInExecutionEnvironment<T> extends CCBLEmitterValue<T> {
+export declare const mathjs: MathJsStatic;
+export declare class CCBLExpressionInExecutionEnvironment<T> extends CCBLEmitterValue<T | undefined> {
     protected env: CCBLEnvironmentExecutionInterface;
     private _originalExpression;
     private _variableNames;
@@ -26,13 +26,13 @@ export declare class CCBLExpressionInExecutionEnvironment<T> extends CCBLEmitter
     getErrorEvaluation(): undefined | string;
     get originalExpression(): string;
     get variableNames(): string[];
-    getExpression(): string;
+    getExpression(): string | undefined;
     setExpression(expression: string, scope?: string[]): string;
     listen(value?: boolean): this;
     isAvailable(): boolean;
     isListening(): boolean;
-    on(cb: (value: T) => void): this;
-    off(cb: (value: T) => void): this;
+    on(cb: (value: T | undefined) => void): this;
+    off(cb: (value: T | undefined) => void): this;
     instanciate(scope?: {
         [key: string]: any;
     }): string;

@@ -13,15 +13,15 @@ export declare class ChannelActionEvent<T> extends ChannelAction<T> implements C
     channel: ChannelInterface<T>;
     protected env: CCBLEnvironmentExecutionInterface;
     exprInEnv: CCBLExpressionInExecutionEnvironment<T>;
-    contextEvent: CCBLContextEvent;
+    contextEvent: CCBLContextEvent | undefined;
     protected triggerable: boolean;
-    protected lastJSON: ChannelActionEventJSON;
+    protected lastJSON: ChannelActionEventJSON | undefined;
     constructor(channel: ChannelInterface<T>, env: CCBLEnvironmentExecutionInterface, expression: string);
     dispose(): void;
     isChannelActionState(): boolean;
     isChannelActionEvent(): boolean;
     toJSON(): ChannelActionEventJSON;
-    getContextEvent(): CCBLContextEvent;
+    getContextEvent(): CCBLContextEvent | undefined;
     getValueGetter(): CCBLExpressionInExecutionEnvironment<T>;
     applyTo(V: T): T;
     attachTo(context: CCBLContextEvent): this;

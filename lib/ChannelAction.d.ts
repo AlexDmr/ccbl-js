@@ -24,6 +24,6 @@ export declare class ChannelAction<T> implements ChannelActionInterface {
     applyTo(V: T): T;
     getChannel(): ChannelInterface<T>;
     getPriority(): number;
-    attachTo(context: CCBLContext): this;
+    attachTo(context: CCBLContext | undefined): this;
     activate(value?: boolean): this;
 }

@@ -20,21 +20,21 @@ export interface CCBLEnvironmentExecutionInterface {
     set_Clock(clock: CCBLClock): this;
     unregister_CCBLEmitterValue(id: string): this;
     register_CCBLEmitterValue(id: string, EV: CCBLEmitterValueInterface<any>): this;
-    get_CCBLEmitterValue_FromId(id: string): CCBLEmitterValueInterface<any>;
+    get_CCBLEmitterValue_FromId(id: string): CCBLEmitterValueInterface<any> | undefined;
     unregister_Channel(id: string): this;
     register_Channel(id: string, chan: ChannelInterface<any>): this;
-    get_Channel_FromId(id: string): ChannelInterface<any>;
+    get_Channel_FromId(id: string): ChannelInterface<any> | undefined;
     unregisterCCBLEvent(id: string): this;
     registerCCBLEvent(id: string, ccblEvent: CCBLEventInterface<any>): this;
-    getCCBLEvent(id: string): CCBLEventInterface<any>;
+    getCCBLEvent(id: string): CCBLEventInterface<any> | undefined;
     unregisterProgInstance(id: string): this;
     registerProgInstance(id: string, progVar: ProgVarForExpr): this;
-    getProgInstance(id: string): ProgVarForExpr;
+    getProgInstance(id: string): ProgVarForExpr | undefined;
     getAllEmitterValues(): CCBLEmitterValueInterface<any>[];
     getAllChannels(): ChannelInterface<any>[];
     getAllProgramInstance(): {
         id: string;
         progVar: ProgVarForExpr;
-    }[];
-    getNameOfChannel(channel: ChannelInterface<any>): string;
+    }[] | undefined;
+    getNameOfChannel(channel: ChannelInterface<any>): string | undefined;
 }

@@ -3,16 +3,16 @@ import { CCBLAllen } from "./Allen";
 import { CCBLContextStateAny, CCBLContextStateEndWith, CCBLContextStateStartWith } from "./ContextState";
 import { CCBLContextInterface } from "./ContextInterface";
 export declare class CCBLAllenMeet extends CCBLAllen {
-    parent: CCBLContextStateEndWith;
+    parent: CCBLContextStateEndWith | undefined;
     children: CCBLContextStateStartWith[];
     private ancestor;
     private lookingForAncestor;
     private parentWasActive;
-    constructor(parent: CCBLContextStateEndWith, children?: CCBLContextStateStartWith[]);
+    constructor(parent: CCBLContextStateEndWith | undefined, children?: CCBLContextStateStartWith[]);
     getAllenType(): AllenType;
-    setParent(parent: CCBLContextStateAny): this;
+    setParent(parent: CCBLContextStateAny | undefined): this;
     appendChildren(...children: CCBLContextStateAny[]): this;
-    getAncestor(): ANCESTOR_MEET;
+    getAncestor(): ANCESTOR_MEET | undefined;
     private CB_active;
 }
 export declare type ANCESTOR_MEET = {

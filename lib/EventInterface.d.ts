@@ -22,8 +22,8 @@ export interface CCBLEventInterface<T> {
     off(cb: CB_CCBLEvent<T>): this;
     trigger(evt: CCBLEventValue<T>): this;
     getEventName(): string;
-    getEventerSourceId(): string;
+    getEventerSourceId(): string | undefined;
     getGuardExpression(): string;
-    getEventExpression(): string;
-    evalEventExpression(): T;
+    getEventExpression(): string | undefined;
+    evalEventExpression(): T | undefined;
 }

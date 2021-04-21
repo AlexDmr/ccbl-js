@@ -1,6 +1,6 @@
 import { MathJsStatic, MathNode } from "mathjs";
 import { HumanReadableStateContext, HumanReadableProgram, HumanReadableStateAction, ContextOrProgram } from "./ProgramObjectInterface";
-export declare const mathjs: Partial<MathJsStatic>;
+export declare const mathjs: MathJsStatic;
 export interface SMTscript {
     script: string;
     ids: string[];

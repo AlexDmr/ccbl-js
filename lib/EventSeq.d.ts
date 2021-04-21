@@ -7,7 +7,7 @@ export declare class CCBLEventSeq<T> extends CCBLEvent<T> {
     private fctAND;
     private children;
     private lastEvents;
-    constructor(eventName: string, env: CCBLEnvironmentExecution, msDelay: number, fctAND: (events: CCBLEventValue<any>[]) => CCBLEventValue<T>);
+    constructor(eventName: string | undefined, env: CCBLEnvironmentExecution, msDelay: number, fctAND: (events: CCBLEventValue<any>[]) => CCBLEventValue<T>);
     dispose(): void;
     append(...eventNodes: CCBLEvent<any>[]): this;
     remove(...eventNodes: CCBLEvent<any>[]): this;
