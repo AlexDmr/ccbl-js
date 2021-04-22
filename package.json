@@ -1,6 +1,6 @@
 {
   "name": "ccbl-js",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "author": "Alexandre Demeure",
   "url": "http://iihm.imag.fr/demeure",
   "license": "Apache-2.0",
@@ -9,7 +9,7 @@
     "Javascript"
   ],
   "main": "lib/main.js",
-  "dependencies": {
+  "peerDependencies": {
     "mathjs": "^9.3.2"
   }
 }
