@@ -120,20 +120,32 @@ export interface EventTrigger {
     eventFilter?: string;
     id?: string;
 }
-export interface HumanReadableStateContext {
+export declare type HumanReadableStateContext = CommonReadableStateContext | HRSC_STATE | HRSC_EVS | HRSC_EVF;
+interface CommonReadableStateContext {
     contextName: string;
-    eventStart?: EventTrigger;
-    state?: string;
-    eventFinish?: EventTrigger;
+    type: "STATE";
     actions?: HumanReadableStateAction[];
     allen?: AllenRelationships;
     actionsOnStart?: HumanReadableEventAction[];
     actionsOnEnd?: HumanReadableEventAction[];
     ccblContext?: CCBLContextStateAny;
     id?: string;
+    state?: string;
+    eventStart?: EventTrigger;
+    eventFinish?: EventTrigger;
+}
+export interface HRSC_STATE extends CommonReadableStateContext {
+    state: string;
+}
+export interface HRSC_EVS extends CommonReadableStateContext {
+    eventStart: EventTrigger;
+}
+export interface HRSC_EVF extends CommonReadableStateContext {
+    eventFinish: EventTrigger;
 }
 export interface HumanReadableEventContext extends EventTrigger {
     contextName: string;
+    type: "EVENT";
     actions: HumanReadableEventAction[];
     ccblContext?: CCBLContextEvent;
     id?: string;
@@ -196,3 +208,4 @@ export declare function copyEventTrigger(evt: EventTrigger): EventTrigger;
 export declare function copyVocabulary(voc: Vocabulary): Vocabulary;
 export declare function copyVariableDescription(vd: VariableDescription): VariableDescription;
 export declare function copyHumanReadableStateActions(action: HumanReadableStateAction, withCcblRef?: boolean): HumanReadableStateAction;
+export {};
