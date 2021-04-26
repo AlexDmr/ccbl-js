@@ -30,6 +30,7 @@ export interface CCBLEnvironmentExecutionInterface {
     unregisterProgInstance(id: string): this;
     registerProgInstance(id: string, progVar: ProgVarForExpr): this;
     getProgInstance(id: string): ProgVarForExpr | undefined;
+    getAllEventers(): CCBLEventInterface<any>[];
     getAllEmitterValues(): CCBLEmitterValueInterface<any>[];
     getAllChannels(): ChannelInterface<any>[];
     getAllProgramInstance(): {

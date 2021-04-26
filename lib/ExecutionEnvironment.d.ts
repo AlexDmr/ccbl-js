@@ -32,6 +32,7 @@ export declare class CCBLEnvironmentExecution implements CCBLEnvironmentExecutio
         progVar: ProgVarForExpr;
     }[] | undefined;
     get_Channel_FromId(id: string): ChannelInterface<any> | undefined;
+    getAllEventers(): CCBLEventInterface<any>[];
     getAllEmitterValues(): CCBLEmitterValueInterface<any>[];
     getAllChannels(): ChannelInterface<any>[];
     getNameOfChannel(channel: ChannelInterface<any>): string | undefined;
