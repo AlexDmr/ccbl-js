@@ -9,6 +9,7 @@
     "Javascript"
   ],
   "main": "lib/main.js",
+  "type": "module",
   "peerDependencies": {
     "mathjs": "^9.3.2"
   }
