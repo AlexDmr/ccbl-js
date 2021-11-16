@@ -1,6 +1,6 @@
 import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterface";
 import { CCBLEmitterValue } from "./EmitterValue";
-import { MathJsStatic } from 'mathjs';
+import { MathJsStatic } from "mathjs";
 import { ChannelInterface } from "./ChannelInterface";
 import { CCBLEmitterValueInterface, CCBLEmitterValueJSON } from "./EmitterValueInterface";
 export declare const scopeInterpolator: {
