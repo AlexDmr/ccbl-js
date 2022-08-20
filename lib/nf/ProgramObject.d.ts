@@ -13,8 +13,8 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     private bindedEmittersAndEvents;
     private localSubProgChannelsId;
     private allChannelsForUpdates;
-    private localChannelsId;
     private localChannels;
+    private localChannelsId;
     private inputChannelsId;
     private outputChannelsId;
     private localEmitters;
