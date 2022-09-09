@@ -9,6 +9,7 @@ export declare type CCBLContextJSON = {
     contextName: string;
 };
 export interface CCBLContextInterface {
+    readonly id: string;
     dispose(): any;
     toJSON(): CCBLContextJSON;
     getParentOfAllenRelationships(): CCBLAllenInterface[];
@@ -19,9 +20,10 @@ export interface CCBLContextInterface {
     getActivable(): boolean;
     setActivable(value: boolean): this;
     getActive(): boolean;
+    getChannelActions(): ChannelActionInterface[];
     appendChannelActions(...actions: ChannelActionInterface[]): this;
     removeChannelActions(...actions: ChannelActionInterface[]): this;
     getPriority(): number;
     setPriority(P: number): this;
-    getType(): string;
+    getType(): "CCBLContextState" | "CCBLContextEvent";
 }

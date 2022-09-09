@@ -4,6 +4,7 @@ import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterfa
 import { CCBLEmitterValueInterface } from "./EmitterValueInterface";
 import { CB_CCBLEmitter } from "./Emitter";
 export interface ChannelActionInterface {
+    readonly id: string;
     dispose(): any;
     getPriority(): number;
     getChannel(): ChannelInterface<any>;

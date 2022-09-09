@@ -7,6 +7,7 @@ import { CCBLAllenJSON } from "./Allen";
 import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterface";
 import { CCBLStateInExecutionEnvironment, CCBLStateInExecutionEnvironmentJSON } from "./StateInExecutionEnvironment";
 import { CCBLContextEvent } from "./ContextEvent";
+import { ChannelActionStateInterface } from "./ChannelActionStateEventInterface";
 export declare type CCBLContextStateJSON = {
     type: string;
     state?: CCBLStateInExecutionEnvironmentJSON;
@@ -42,10 +43,12 @@ export declare class CCBLContextState<T_EVENT_START, T_EVENT_FINISH> extends CCB
     private active;
     private emitter;
     private cb_jsonDirty;
+    readonly id: string;
     constructor(config: configCCBLContextState<T_EVENT_START, T_EVENT_FINISH>);
     dispose(): void;
-    getType(): string;
+    getType(): "CCBLContextState" | "CCBLContextEvent";
     toJSON(): CCBLContextStateJSON;
+    getChannelActionStates(): ChannelActionStateInterface[];
     getActive(): boolean;
     getActivable(): boolean;
     setActivable(value?: boolean): this;

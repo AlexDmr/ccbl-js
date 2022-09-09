@@ -7,7 +7,7 @@ export declare type ChannelActionJSON = {
     type: string;
     channel: ChannelJSON;
 };
-export declare class ChannelAction<T> implements ChannelActionInterface {
+export declare abstract class ChannelAction<T> implements ChannelActionInterface {
     channel: ChannelInterface<T>;
     jsonDirty: CCBLEmitterValue<boolean>;
     protected active: boolean;
@@ -15,6 +15,7 @@ export declare class ChannelAction<T> implements ChannelActionInterface {
     private context;
     private isActivated;
     cbEmitterChange: any;
+    abstract readonly id: string;
     constructor(channel: ChannelInterface<T>);
     dispose(): void;
     toJSON(): ChannelActionJSON;

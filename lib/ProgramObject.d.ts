@@ -1,6 +1,6 @@
 import { CCBLClock } from "./Clock";
 import { CCBLContextState, CCBLContextStateAny } from "./ContextState";
-import { CCBLProgramObjectInterface, ChannelDescription, EmitterDescription, EventerDescription, HumanReadableEventAction, HumanReadableProgram, HumanReadableStateAction, ProgramInput, VariableDescription } from "./ProgramObjectInterface";
+import { CcblProgramElements, CCBLProgramObjectInterface, ChannelDescription, EmitterDescription, EventerDescription, HumanReadableEventAction, HumanReadableProgram, HumanReadableStateAction, ProgramInput, VariableDescription } from "./ProgramObjectInterface";
 import { AllenType } from "./AllenInterface";
 import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterface";
 import { CCBLEmitterValueInterface } from "./EmitterValueInterface";
@@ -31,6 +31,7 @@ export declare class CCBLProgramObject implements CCBLProgramObjectInterface {
     private parentProgram;
     constructor(name: string, clock: CCBLClock);
     dispose(): void;
+    getCcblElements(): CcblProgramElements;
     UpdateChannelsActions(): void;
     getChannels(): ChannelInterface<any>[];
     recomputeAllChannelsForUpdate(): void;

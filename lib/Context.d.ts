@@ -13,10 +13,11 @@ export declare abstract class CCBLContext implements CCBLContextInterface {
     protected lastJSON: CCBLContextJSON | undefined;
     protected jsonDirty: boolean;
     protected abstract contextName: string;
+    abstract readonly id: string;
     dispose(): void;
     protected cbActionDirty: (dirty: boolean) => void;
     setJsonDirty(): this;
-    getType(): string;
+    abstract getType(): "CCBLContextState" | "CCBLContextEvent";
     toJSON(): CCBLContextJSON;
     getContextName(): string;
     getChannelActions(): ChannelAction<any>[];

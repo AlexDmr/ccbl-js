@@ -4,17 +4,35 @@ import { CCBLEmitterValueInterface } from "./EmitterValueInterface";
 import { AllenType } from "./AllenInterface";
 import { CCBLEnvironmentExecutionInterface } from "./ExecutionEnvironmentInterface";
 import { CCBLContextState, CCBLContextStateAny } from "./ContextState";
-import { ChannelActionState } from "./ChannelActionState";
-import { ChannelActionEvent } from "./ChannelActionEvent";
 import { CCBLContextEvent } from "./ContextEvent";
+import { ChannelActionEventInterface, ChannelActionStateInterface } from "./ChannelActionStateEventInterface";
 export declare type ProgVarForExpr = {
     [key: string]: CCBLEmitterValueInterface<any>;
 };
+export interface CcblProgramElements {
+    program: CCBLProgramObjectInterface;
+    subProgramInstances: {
+        [id in string]: CcblProgramElements;
+    };
+    stateContexts: {
+        [id in string]: CCBLContextStateAny;
+    };
+    eventContexts: {
+        [id in string]: CCBLContextEvent;
+    };
+    stateActions: {
+        [id in string]: ChannelActionStateInterface;
+    };
+    eventActions: {
+        [id in string]: ChannelActionEventInterface;
+    };
+}
 export interface CCBLProgramObjectInterface {
     dispose(): any;
     getRootContext(): CCBLContextState<any, any>;
     getEnvironment(): CCBLEnvironmentExecutionInterface;
     getHumanReadableDescription(): HumanReadableProgram | undefined;
+    getCcblElements(): CcblProgramElements;
     activate(v?: boolean): this;
     UpdateChannelsActions(): any;
     loadHumanReadableProgram(descr: HumanReadableProgram, env: CCBLEnvironmentExecutionInterface, mapInputs: {
@@ -98,7 +116,6 @@ export interface AllenRelationships {
 export interface HumanReadableStateAction {
     channel: string;
     affectation: Affectation;
-    ccblAction?: ChannelActionState<any>;
     id?: string;
 }
 export declare type HumanReadableEventAction = HumanReadableEventChannelAction | HumanReadableEventTriggerAction;
@@ -110,7 +127,6 @@ export declare type HumanReadableEventTriggerAction = {
 export declare type HumanReadableEventChannelAction = {
     channel: string;
     affectation: string;
-    ccblAction?: ChannelActionEvent<any>;
     id?: string;
 };
 export interface EventTrigger {
@@ -128,7 +144,6 @@ interface CommonReadableStateContext {
     allen?: AllenRelationships;
     actionsOnStart?: HumanReadableEventAction[];
     actionsOnEnd?: HumanReadableEventAction[];
-    ccblContext?: CCBLContextStateAny;
     id?: string;
     state?: string;
     eventStart?: EventTrigger;
@@ -147,7 +162,6 @@ export interface HumanReadableEventContext extends EventTrigger {
     contextName: string;
     type: "EVENT";
     actions: HumanReadableEventAction[];
-    ccblContext?: CCBLContextEvent;
     id?: string;
 }
 export declare type HumanReadableContext = HumanReadableStateContext | HumanReadableEventContext;
@@ -159,7 +173,6 @@ export interface HumanReadableProgram {
     subPrograms?: {
         [key: string]: HumanReadableProgram;
     };
-    ccblContext?: CCBLContextStateAny;
     description?: string;
     name?: string;
 }
@@ -197,17 +210,17 @@ export declare function DependenciesEquivalents(A: ImportExportConfig, B: Import
 export declare function variablesEquivalents(A: VariableDescription[], B: VariableDescription[]): boolean;
 export declare function eventActionsEquivalent(A: HumanReadableEventAction[], B: HumanReadableEventAction[], withId: boolean): boolean;
 export declare function stateActionsEquivalents(A: HumanReadableStateAction[], B: HumanReadableStateAction[], withId: boolean): boolean;
-export declare function copyHumanReadableProgram(prog: HumanReadableProgram, withCcblRef?: boolean): HumanReadableProgram;
-export declare function copyContextOrProgram(obj: ContextOrProgram, withCcblRef?: boolean): ContextOrProgram;
+export declare function copyHumanReadableProgram(prog: HumanReadableProgram): HumanReadableProgram;
+export declare function copyContextOrProgram(obj: ContextOrProgram): ContextOrProgram;
 export declare function copyProgRef(progRef: ProgramReference): ProgramReference;
-export declare function copyAllen(allen: AllenRelationships, withCcblRef?: boolean): AllenRelationships;
-export declare function copyHumanReadableEventContext(c: HumanReadableEventContext, withCcblRef?: boolean): HumanReadableEventContext;
-export declare function copyHumanReadableStateContext(c: HumanReadableStateContext, withCcblRef?: boolean): HumanReadableStateContext;
-export declare function copyHumanReadableEventAction(a: HumanReadableEventAction, withCcblRef?: boolean): HumanReadableEventAction;
+export declare function copyAllen(allen: AllenRelationships): AllenRelationships;
+export declare function copyHumanReadableEventContext(c: HumanReadableEventContext): HumanReadableEventContext;
+export declare function copyHumanReadableStateContext(c: HumanReadableStateContext): HumanReadableStateContext;
+export declare function copyHumanReadableEventAction(a: HumanReadableEventAction): HumanReadableEventAction;
 export declare function copyEventTrigger(evt: EventTrigger): EventTrigger;
 export declare function copyVocabulary(voc: Vocabulary): Vocabulary;
 export declare function copyVariableDescription(vd: VariableDescription): VariableDescription;
-export declare function copyHumanReadableStateActions(action: HumanReadableStateAction, withCcblRef?: boolean): HumanReadableStateAction;
+export declare function copyHumanReadableStateActions(action: HumanReadableStateAction): HumanReadableStateAction;
 export declare function cleanStateAction(A: HumanReadableStateAction): HumanReadableStateAction;
 export declare function cleanEventAction(A: HumanReadableEventAction): HumanReadableEventAction;
 export declare function cleanProgramInstance(P: ProgramReference): ProgramReference;

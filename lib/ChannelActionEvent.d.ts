@@ -16,6 +16,7 @@ export declare class ChannelActionEvent<T> extends ChannelAction<T> implements C
     contextEvent: CCBLContextEvent | undefined;
     protected triggerable: boolean;
     protected lastJSON: ChannelActionEventJSON | undefined;
+    readonly id: string;
     constructor(channel: ChannelInterface<T>, env: CCBLEnvironmentExecutionInterface, expression: string);
     dispose(): void;
     isChannelActionState(): boolean;
