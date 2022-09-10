@@ -1,6 +1,7 @@
 import { ChannelActionJSON } from "./ChannelAction";
 import { CCBLAllenInterface, CCBLAllenJSON } from "./AllenInterface";
 import { ChannelActionInterface } from "./ChannelActionStateEventInterface";
+import { CB_CCBLEmitter } from "./Emitter";
 export declare type CCBLContextJSON = {
     type: string;
     parentOfAllenRelationships: CCBLAllenJSON[];
@@ -26,4 +27,7 @@ export interface CCBLContextInterface {
     getPriority(): number;
     setPriority(P: number): this;
     getType(): "CCBLContextState" | "CCBLContextEvent";
+    onceActiveUpdated(cb: CB_CCBLEmitter<boolean>): this;
+    onActiveUpdated(cb: CB_CCBLEmitter<boolean>): this;
+    offActiveUpdated(cb: CB_CCBLEmitter<boolean>): this;
 }

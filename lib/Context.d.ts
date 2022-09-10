@@ -3,6 +3,7 @@ import { ChannelAction } from "./ChannelAction";
 import { CCBLContextJSON as CCBLContextJSON_fromInterface, CCBLContextInterface } from "./ContextInterface";
 import { ChannelInterface } from "./ChannelInterface";
 import { CCBLContextStateAny } from "./ContextState";
+import { CB_CCBLEmitter, CCBLEmitter } from "./Emitter";
 export declare type CCBLContextJSON = CCBLContextJSON_fromInterface;
 export declare abstract class CCBLContext implements CCBLContextInterface {
     priority: number;
@@ -14,6 +15,7 @@ export declare abstract class CCBLContext implements CCBLContextInterface {
     protected jsonDirty: boolean;
     protected abstract contextName: string;
     abstract readonly id: string;
+    protected emitterActive: CCBLEmitter<boolean>;
     dispose(): void;
     protected cbActionDirty: (dirty: boolean) => void;
     setJsonDirty(): this;
@@ -27,6 +29,9 @@ export declare abstract class CCBLContext implements CCBLContextInterface {
     removeReferedByAllenRelationships(...allens: CCBLAllenInterface[]): this;
     getActivable(): boolean;
     setActivable(value?: boolean): this;
+    onceActiveUpdated(cb: CB_CCBLEmitter<boolean>): this;
+    onActiveUpdated(cb: CB_CCBLEmitter<boolean>): this;
+    offActiveUpdated(cb: CB_CCBLEmitter<boolean>): this;
     getActive(): boolean;
     appendChannelActions(...actions: ChannelAction<any>[]): this;
     removeChannelActions(...actions: ChannelAction<any>[]): this;

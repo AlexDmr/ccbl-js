@@ -1,5 +1,4 @@
 import { CCBLEventInterface, CCBL_EventJSON } from "./EventInterface";
-import { CB_CCBLEmitter } from "./Emitter";
 import { ChannelActionState } from "./ChannelActionState";
 import { CCBLContext } from "./Context";
 import { ChannelActionJSON } from "./ChannelAction";
@@ -41,7 +40,6 @@ export declare class CCBLContextState<T_EVENT_START, T_EVENT_FINISH> extends CCB
     protected lastJSONState: CCBLContextStateJSON | undefined;
     private msEventStart;
     private active;
-    private emitter;
     private cb_jsonDirty;
     readonly id: string;
     constructor(config: configCCBLContextState<T_EVENT_START, T_EVENT_FINISH>);
@@ -52,9 +50,6 @@ export declare class CCBLContextState<T_EVENT_START, T_EVENT_FINISH> extends CCB
     getActive(): boolean;
     getActivable(): boolean;
     setActivable(value?: boolean): this;
-    onceActiveUpdated(cb: CB_CCBLEmitter<boolean>): this;
-    onActiveUpdated(cb: CB_CCBLEmitter<boolean>): this;
-    offActiveUpdated(cb: CB_CCBLEmitter<boolean>): this;
     appendChannelActions(...actions: ChannelActionState<any>[]): this;
     private updateActive;
     private cbEventStart;
