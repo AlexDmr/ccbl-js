@@ -41,10 +41,18 @@ export interface ChannelUpdate {
     channelId: string;
     channelValue: string;
 }
+export interface ChannelsUpdate {
+    type: "channels update";
+    list: [channelId: string, channelValue: string][];
+}
 export interface ExportedEmitterUpdate {
     type: "exported emitter update";
     emitterId: string;
     emitterValue: string;
+}
+export interface ExportedEmittersUpdate {
+    type: "exported emitters update";
+    list: [emitterId: string, emitterValue: string][];
 }
 export interface ExportedEventerUpdate {
     type: "exported eventer update";
@@ -57,12 +65,20 @@ export interface ActionUpdate {
     active: boolean;
     overrided: undefined | string;
 }
+export interface ActionsUpdate {
+    type: "actions update";
+    list: [actionId: string, active: boolean, overrided: undefined | string][];
+}
 export interface ContextUpdate {
     type: "context update";
     contextId: string;
     active: boolean;
 }
-export declare type PayloadForMain = undefined | ExportedEventerUpdate | ActionUpdate | ContextUpdate | ProgramUpdate | ChannelUpdate | ExportedEmitterUpdate;
+export interface ContextsUpdate {
+    type: "contexts update";
+    list: [contextId: string, active: boolean][];
+}
+export declare type PayloadForMain = undefined | ExportedEventerUpdate | ActionsUpdate | ActionUpdate | ContextUpdate | ContextsUpdate | ProgramUpdate | ChannelUpdate | ChannelsUpdate | ExportedEmitterUpdate | ExportedEmittersUpdate;
 export declare type PayloadForThread = {
     type: "LoadRootProgram";
     program: HumanReadableProgram;
