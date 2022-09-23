@@ -15,101 +15,102 @@ export declare class WorkerP<PM, PR> {
     };
 }
 export interface MessageForThread<PM> {
-    idMsg: number;
-    msg: PM;
+    readonly idMsg: number;
+    readonly msg: PM;
 }
 export declare type ResponseForMain<PR> = {
-    type: "ok";
-    idMsg: number;
-    res: PR;
+    readonly type: "ok";
+    readonly idMsg: number;
+    readonly res: PR;
 } | {
-    type: "error";
-    idMsg: number;
-    res: string;
+    readonly type: "error";
+    readonly idMsg: number;
+    readonly res: string;
 };
 export interface ProgramUpdate {
-    type: "program update";
-    program: HumanReadableProgram;
-    subProgramInstances: string[];
-    stateContexts: string[];
-    eventContexts: string[];
-    stateActions: string[];
-    eventActions: string[];
+    readonly type: "program update";
+    readonly program: HumanReadableProgram;
+    readonly subProgramInstances: readonly string[];
+    readonly stateContexts: readonly string[];
+    readonly eventContexts: readonly string[];
+    readonly stateActions: readonly string[];
+    readonly eventActions: readonly string[];
 }
 export interface ChannelUpdate {
-    type: "channel update";
-    channelId: string;
-    channelValue: string;
+    readonly type: "channel update";
+    readonly channelId: string;
+    readonly channelValue: string;
+    readonly hasActiveAction: boolean;
 }
 export interface ChannelsUpdate {
-    type: "channels update";
-    list: [channelId: string, channelValue: string][];
+    readonly type: "channels update";
+    readonly list: readonly [channelId: string, channelValue: string, hasActiveAction: boolean][];
 }
 export interface ExportedEmitterUpdate {
-    type: "exported emitter update";
-    emitterId: string;
-    emitterValue: string;
+    readonly type: "exported emitter update";
+    readonly emitterId: string;
+    readonly emitterValue: string;
 }
 export interface ExportedEmittersUpdate {
-    type: "exported emitters update";
-    list: [emitterId: string, emitterValue: string][];
+    readonly type: "exported emitters update";
+    readonly list: readonly [emitterId: string, emitterValue: string][];
 }
 export interface ExportedEventerUpdate {
-    type: "exported eventer update";
-    eventerId: string;
-    eventerValue: string;
+    readonly type: "exported eventer update";
+    readonly eventerId: string;
+    readonly eventerValue: string;
 }
 export interface ActionUpdate {
-    type: "action update";
-    actionId: string;
-    active: boolean;
-    overrided: undefined | string;
+    readonly type: "action update";
+    readonly actionId: string;
+    readonly active: boolean;
+    readonly overrided: undefined | string;
 }
 export interface ActionsUpdate {
-    type: "actions update";
-    list: [actionId: string, active: boolean, overrided: undefined | string][];
+    readonly type: "actions update";
+    readonly list: readonly [actionId: string, active: boolean, overrided: undefined | string][];
 }
 export interface ContextUpdate {
-    type: "context update";
-    contextId: string;
-    active: boolean;
+    readonly type: "context update";
+    readonly contextId: string;
+    readonly active: boolean;
 }
 export interface ContextsUpdate {
-    type: "contexts update";
-    list: [contextId: string, active: boolean][];
+    readonly type: "contexts update";
+    readonly list: readonly [contextId: string, active: boolean][];
 }
 export declare type PayloadForMain = undefined | ExportedEventerUpdate | ActionsUpdate | ActionUpdate | ContextUpdate | ContextsUpdate | ProgramUpdate | ChannelUpdate | ChannelsUpdate | ExportedEmitterUpdate | ExportedEmittersUpdate;
 export declare type PayloadForThread = {
-    type: "LoadRootProgram";
-    program: HumanReadableProgram;
+    readonly type: "LoadRootProgram";
+    readonly program: HumanReadableProgram;
 } | {
-    type: "SIMULATION";
-    command: "START" | "STOP";
+    readonly type: "SIMULATION";
+    readonly command: "START" | "STOP";
 } | {
-    type: "appendSubProgram";
-    subProgramId: string;
-    subProgram: HumanReadableProgram;
+    readonly type: "appendSubProgram";
+    readonly subProgramId: string;
+    readonly subProgram: HumanReadableProgram;
 } | {
-    type: "removeSubProgram";
-    subProgramId: string;
+    readonly type: "removeSubProgram";
+    readonly subProgramId: string;
 } | {
-    type: "plugSubProgramAs";
-    programId: string;
-    as: string;
-    mapInputs: {
+    readonly type: "plugSubProgramAs";
+    readonly programId: string;
+    readonly as: string;
+    readonly mapInputs: {
         [key: string]: string;
     };
-    allen: AllenType;
-    hostContextName: string;
+    readonly allen: AllenType;
+    readonly hostContextName: string;
 } | {
-    type: "unplugSubProgramInstance";
-    instanceName: string;
+    readonly type: "unplugSubProgramInstance";
+    readonly instanceName: string;
 } | {
-    type: "emitterUpdate";
-    emitterId: string;
-    emitterValue: string;
+    readonly type: "emitterUpdate";
+    readonly emitterId: string;
+    readonly emitterValue: string;
 } | {
-    type: "eventUpdate";
-    eventId: string;
-    eventValue: string;
+    readonly type: "eventUpdate";
+    readonly eventId: string;
+    readonly eventValue: string;
 };

@@ -9,6 +9,16 @@ import { ChannelActionEventInterface, ChannelActionStateInterface } from "./Chan
 export declare type ProgVarForExpr = {
     [key: string]: CCBLEmitterValueInterface<any>;
 };
+export interface CcblProgramElementsJSON {
+    program: HumanReadableProgram;
+    subProgramInstances: {
+        [id in string]: CcblProgramElementsJSON;
+    };
+    stateContexts: string[];
+    eventContexts: string[];
+    stateActions: string[];
+    eventActions: string[];
+}
 export interface CcblProgramElements {
     program: CCBLProgramObjectInterface;
     subProgramInstances: {
@@ -27,6 +37,14 @@ export interface CcblProgramElements {
         [id in string]: ChannelActionEventInterface;
     };
 }
+export declare function CcblProgramElements_to_JSON(E: CcblProgramElements): CcblProgramElementsJSON;
+export declare type ProgramPath = readonly string[];
+export interface InstanceStep {
+    step: string;
+    elements: CcblProgramElementsJSON;
+}
+export declare type InstancePath = InstanceStep[];
+export declare function getInstance<PATH extends ProgramPath>(path: PATH, elements: CcblProgramElementsJSON): InstancePath | undefined;
 export interface CCBLProgramObjectInterface {
     dispose(): any;
     getRootContext(): CCBLContextState<any, any>;
@@ -43,6 +61,7 @@ export interface CCBLProgramObjectInterface {
     plugSubProgramAs(config: {
         programId: string;
         as: string;
+        description: string | undefined;
         mapInputs: {
             [key: string]: string;
         };
@@ -103,6 +122,7 @@ export interface ProgramReference {
         [key: string]: ProgramInput;
     };
     id?: string;
+    description?: string;
 }
 export interface AllenRelationships {
     During?: ContextOrProgram[];

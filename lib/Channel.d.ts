@@ -10,6 +10,7 @@ export declare class Channel<T> implements ChannelInterface<T> {
     lastActiveStateConfig: ActiveStateConfig<T> | undefined;
     actions: ChannelActionStateOrEvent[];
     configActiveActionEvents: configActiveActionEvent<T>[];
+    readonly hasActiveAction: CCBLEmitterValue<boolean>;
     private cbEmitter;
     private forceCommit;
     constructor(valueEmitter: CCBLEmitterValueInterface<T>);

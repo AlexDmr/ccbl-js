@@ -28,6 +28,10 @@ export declare class CCBLProgramWorker {
     private change;
     constructor(W: WorkerP<PayloadForThread, PayloadForMain>);
     loadHumanReadableProgram(program: HumanReadableProgram): Promise<PayloadForMain>;
+    getCcblChannel(id: string): undefined | Pick<ChannelUpdate, "channelValue" | "hasActiveAction">;
+    getCcblEmitter(id: string): undefined | {
+        value: string;
+    };
     on(...[eventType, cb]: SubscribeParamChange[keyof SubscribeParamChange]): this;
     off(...[eventType, cb]: SubscribeParamChange[keyof SubscribeParamChange]): this;
     processMessage(msg: PayloadForThread): this;
